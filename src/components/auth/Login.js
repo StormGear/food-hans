@@ -130,7 +130,7 @@ const Login = () => {
                     name="email"
                     type="email"
                     placeholder="example@email.com"
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-len-500 focus:border-blue-500 outline-none transition-colors"
                     value={formData.email}
                     onChange={handleInputChange}
                   />
@@ -174,8 +174,8 @@ const Login = () => {
             <button
               disabled={(passwordCheck.length > 0 && emailCheck.length > 0) || loadingState.loading}
               type="submit"
-              className={`mt-6 w-full  py-2 px-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors
-                ${(passwordCheck.length > 0 || emailCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}
+              className={`mt-6 w-full  py-2 px-4 rounded-lg focus:ring-2 focus:ring-green-400 focus:ring-offset-2 transition-colors
+                ${(passwordCheck.length > 0 || emailCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-green-400 text-white hover:bg-green-400'}
                 `}
             >
              { loadingState.loading ? <Spinner /> : 'Login'}

@@ -116,7 +116,7 @@ const Signup = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 bg-custom-image">
+    <div className="bg-custom-image bg-cover min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
         <div className="p-6 bg-white border-b border-gray-200">

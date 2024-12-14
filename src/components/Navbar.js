@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className='w-full relative  min-h-16 flex justify-between bg-secondary-color'>
           <div>
             <NavLink to={`/users/${userId}/`} className='text-white text-2xl font-semibold absolute left-4 p-4'>
-            <img src={logo} alt="Logo" className='w-20 h-8'/> 
+             HansFood
             </NavLink>
           </div>
         <div className="block lg:hidden p-4">
@@ -80,11 +80,7 @@ const Navbar = () => {
             navigate('/')
            }
             }>
-          <Tooltip title="Logout" arrow>
-            <Button>
-             <IoLogOut className='text-red-400 text-2xl' />
-            </Button>
-          </Tooltip>
+           Logout
            </button>
           <p className="text-white mr-4 hidden md:block font-bold">Welcome, {authState.user?.name}</p>
            
@@ -101,7 +97,7 @@ const Navbar = () => {
                     }
                    }
                 >
-                 View Cart - {cartItems.length}
+                  Cart - {cartItems.length}
                 </NavLink>
             </span>
           </div>

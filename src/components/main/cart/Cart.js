@@ -71,7 +71,7 @@ const Cart = () => {
         <p className="text-gray-700 mb-4 font-bold">Your cart is empty.</p>
         <NavLink
         to={`/users/${userId}`}
-        className="bg-sky-500/100 text-white px-4 py-2 rounded"
+        className="bg-green-500 text-white px-4 py-2 rounded"
       >
         Back to Menu
       </NavLink>
@@ -101,7 +101,7 @@ const Cart = () => {
 
               <NavLink
                 to={`/users/${userId}`}
-                className="bg-sky-500/100 text-white px-4 py-2 my-2 rounded max-w-max"
+                className="bg-green-500 text-white px-4 py-2 my-2 rounded max-w-max"
               >
                 Back to Menu
               </NavLink>
