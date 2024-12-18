@@ -1,3 +1,3 @@
-const baseUrl = "https://food-service-d1ed0096c526.herokuapp.com";
+const baseUrl = "https://food-service-backend.onrender.com";
 
 export default baseUrl;
