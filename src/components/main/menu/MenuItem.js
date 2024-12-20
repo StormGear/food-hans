@@ -50,19 +50,19 @@ const MenuItem = ({ item, onAddToCart }) => {
   };
 
   return (
-    <>
-     <Card sx={{ maxWidth: 300 }}>
+    <div className="mx-auto w-2/3">
+     <Card className="overflow-scroll">
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
         image={item.image_url}
+        className="h-40"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
          {item.name}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body1" sx={{ color: 'text.secondary' }}>
          Price: GH₵ {item.price}
         </Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -90,7 +90,7 @@ const MenuItem = ({ item, onAddToCart }) => {
           </ul>
         </div>
       )}
-        </Typography>
+      </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">
@@ -113,7 +113,7 @@ const MenuItem = ({ item, onAddToCart }) => {
         </Button>
       </CardActions>
      </Card>
-    </>
+    </div>
   );
 };
 

@@ -6,13 +6,11 @@ import MenuItem from "./MenuItem";
 import { useContext } from "react";
 import { MenuContext } from "../../../contextproviders/Menucontext";
 import { CartContext } from "../../../contextproviders/Cartcontext";
-import { NavLink, useParams } from "react-router-dom";
 // import { AuthContext } from "../../../contextproviders/Authcontext";
 
 const Menu = () => {
   const { menuItems, setMenuItems } = useContext(MenuContext);
   const {  addToCart } = useContext(CartContext);
-  const { userId } = useParams();
   // const { authState } = useContext(AuthContext)
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const Menu = () => {
 
   return (
 
-      <div className="p-4">
+      <div className="p-4 grid grid-cols-3 gap-3">
         {menuItems.map((item) => (
           <MenuItem key={item.menuitem_id} item={item} onAddToCart={addToCart} />
         ))}
