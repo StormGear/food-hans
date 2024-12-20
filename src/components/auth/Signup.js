@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useContext, useReducer } from 'react';
-import { Mail, Lock, User, Eye, EyeOff, BeanOff } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, MilkOff } from 'lucide-react';
 import { AuthContext } from '../../contextproviders/Authcontext';
 import { NavLink } from 'react-router-dom';
 // import { Spinner } from "flowbite-react";
@@ -12,7 +12,7 @@ import Spinner from '../Spinner';
 
 const Signup = () => {
   const {  signup } = useContext(AuthContext)
-  const [passwordCheck, setPasswordCheck] = useState('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+  const [passwordCheck, setPasswordCheck] = useState('Must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number');
   const [nameCheck, setNameCheck] = useState('Name of at least 4 characters is required');
   const [emailCheck, setEmailCheck] = useState('Enter a valid email address');
   const [showPassword, setShowPassword] = useState(false);
@@ -119,12 +119,12 @@ const Signup = () => {
     <div className="bg-custom-image bg-cover min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
-        <div className="p-6 bg-white border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-800">
+        <div className="p-6 bg-white">
+          <h2 className="text-2xl font-bold text-gray-800 text-center">
            Sign Up
           </h2>
 
-          <p className="mt-1 text-sm text-gray-600">
+          <p className="mt-1 text-sm text-gray-600 text-center">
             Welcome back! Please login to your account.
           
           </p>
@@ -139,7 +139,7 @@ const Signup = () => {
               <div>
                 <label 
                   htmlFor="name" 
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-700 mb-1 "
                 >
                   Name
                 </label>
@@ -150,12 +150,12 @@ const Signup = () => {
                     name="name"
                     type="text"
                     placeholder="John Doe"
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                     value={formData.name}
                     onChange={handleInputChange}
                   />
                 </div>
-                <p>{nameCheck}</p>
+                <p  className='text-red-400 italic'>{nameCheck}</p>
               </div>
               {/* Allergies field  */}
             <div>
@@ -163,16 +163,16 @@ const Signup = () => {
                 htmlFor="allergies" 
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Dietary Restrictions/Allergies
+                Allergies
               </label>
               <div className="relative">
-                <BeanOff className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <MilkOff className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
                   id="allergies"
                   name="allergies"
                   type="text"
-                  placeholder="eg. groundnuts,rice separated by commas"
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                  placeholder="eg. milk, eggs"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   value={formData.allergies}
                   onChange={handleInputChange}
                 />
@@ -196,12 +196,12 @@ const Signup = () => {
                   name="email"
                   type="email"
                   placeholder="example@email.com"
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                   value={formData.email}
                   onChange={handleInputChange}
                 />
               </div>
-              <p>{ emailCheck }</p>
+              <p className='text-red-400 italic'>{ emailCheck }</p>
             </div>
 
 
@@ -227,12 +227,12 @@ const Signup = () => {
                   name="password"
                   type= { showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  className= { passwordCheck.length < 1 ? "w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors" : "w-full pl-10 pr-4 py-2 border border-red-500 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors" }
+                  className= { passwordCheck.length < 1 ? "w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none transition-colors" : "w-full pl-10 pr-4 py-2 border border-red-500 rounded-full focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors" }
                   value={formData.password}
                   onChange={handleInputChange}
                 />
               </div>
-              <p>{ passwordCheck }</p>
+              <p className='text-red-400 italic'>{ passwordCheck }</p>
             </div>
           </div>
 
@@ -240,19 +240,19 @@ const Signup = () => {
           <button
            disabled={(passwordCheck.length > 0 && emailCheck.length > 0 && nameCheck.length > 0) || loadingState.loading}
             type="submit"
-            className={`mt-6 w-full  py-2 px-4 rounded-lg focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors
-              ${(passwordCheck.length > 0 || emailCheck.length > 0 || nameCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-blue-600 text-white hover:bg-blue-700'}
+            className={`mt-6 w-1/2 text-center py-2 px-4 rounded-full focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 transition-colors
+              ${(passwordCheck.length > 0 || emailCheck.length > 0 || nameCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-yellow-600 text-white hover:bg-yellow-700'}
               `}>
              { loadingState.loading ? <Spinner /> : 'Signup'}
           </button>
 
           {/* Toggle Link */}
-          <p className="mt-4 text-sm text-gray-600 text-center">
+          <p className="mt-4 text-sm text-gray-600">
             
              Already have an account? 
             <NavLink
               to="/"
-              className="text-blue-600 hover:underline focus:outline-none pl-3"
+              className="text-slate-600 hover:underline focus:outline-none pl-3"
             >
              Login
             </NavLink>

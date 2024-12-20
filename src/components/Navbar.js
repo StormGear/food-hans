@@ -8,10 +8,9 @@ import { AuthContext } from "../contextproviders/Authcontext";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import baseUrl from '../constants';
-import { IoLogOut } from "react-icons/io5";
-import logo from '../assets/images/logo.png'; 
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+// import { IoLogOut } from "react-icons/io5";
+// import Tooltip from '@mui/material/Tooltip';
+// import Button from '@mui/material/Button';
 
 
 const Navbar = () => {

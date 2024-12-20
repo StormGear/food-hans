@@ -6,6 +6,12 @@ import Spinner from "../../Spinner";
 import { CartContext } from "../../../contextproviders/Cartcontext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contextproviders/Authcontext";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 
@@ -44,20 +50,23 @@ const MenuItem = ({ item, onAddToCart }) => {
   };
 
   return (
-    <div className="border p-4 rounded shadow-md mb-4 max-w-72">
-      <h2 className="text-xl font-semibold">{item.name}</h2>
-      <p className="text-gray-700">Price: GH₵ {item.price}</p>
-      <div className="text-gray-700">
-        <p>Nutritional Information:</p>
-        <ul className="list-disc ml-6 ">
-          {
-            item.nutritional_info.map((item, index) => (
-              <li key={index}>{item} </li>
-            ))
-          } 
-        </ul>
-      </div>
-      <div className="my-4">
+    <>
+     <Card sx={{ maxWidth: 300 }}>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="140"
+        image={item.image_url}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+         {item.name}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+         Price: GH₵ {item.price}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <div className="my-4">
         <p className="font-semibold">Extra Toppings:</p>
         {item.extra_toppings.map((option) => (
           <label key={option} className="block">
@@ -73,7 +82,7 @@ const MenuItem = ({ item, onAddToCart }) => {
       </div>
       {selectedOptions.length > 0 && (
         <div className="my-4">
-          <p className="font-semibold">Selected Customizations:</p>
+          <p className="font-semibold">Selected Options:</p>
           <ul className="list-disc ml-6">
             {selectedOptions.map((opt) => (
               <li key={opt}>{opt}</li>
@@ -81,7 +90,11 @@ const MenuItem = ({ item, onAddToCart }) => {
           </ul>
         </div>
       )}
-       <button
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">
+        <button
             disabled={loadingState.loading}
             onClick={ handleAddToCart}
             className={`${loadingState.loading ? "bg-gray-300" : "bg-secondary-color"} text-white px-4 py-2 rounded min-w-20`}
@@ -96,10 +109,13 @@ const MenuItem = ({ item, onAddToCart }) => {
               return  'Go to Cart';
           }
           })()}
-         
           </button>
-    </div>
+        </Button>
+      </CardActions>
+     </Card>
+    </>
   );
 };
+
 
 export default MenuItem;

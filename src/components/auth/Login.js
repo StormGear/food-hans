@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {  login } = useContext(AuthContext)
-    const [passwordCheck, setPasswordCheck] = useState('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+    const [passwordCheck, setPasswordCheck] = useState('Must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number');
     const [emailCheck, setEmailCheck] = useState('Enter a valid email address');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -102,12 +102,12 @@ const Login = () => {
       <div className="bg-custom-image bg-cover bg-center bg-no-repeat min-h-screen bg-gray-100 flex items-center justify-center p-4">
         <div className="w-full md:w-1/2 max-w-md bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="p-6 bg-white border-b border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-800">
+          <div className="p-6 bg-white">
+            <h2 className="text-2xl font-bold text-slate-600 text-center">
               Login
             </h2>
   
-            <p className="mt-1 text-sm text-gray-600">
+            <p className="mt-1 text-sm text-slate-600 text-center">
               Create an account to get started
             </p>
           </div>
@@ -121,7 +121,7 @@ const Login = () => {
                   htmlFor="email" 
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Email
+                  Email <span className='text-red-400'>*</span>
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -130,7 +130,7 @@ const Login = () => {
                     name="email"
                     type="email"
                     placeholder="example@email.com"
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-len-500 focus:border-blue-500 outline-none transition-colors"
+                    className="w-full pl-10 pr-4 py-2 border border-yellow-500 rounded-full focus:ring-len-500 focus:border-yellow-500 outline-none transition-colors"
                     value={formData.email}
                     onChange={handleInputChange}
                   />
@@ -145,7 +145,7 @@ const Login = () => {
                   htmlFor="password" 
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Password
+                  Password <span className='text-red-400'>*</span>
                 </label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -161,7 +161,7 @@ const Login = () => {
                     name="password"
                     type= { showPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className= { passwordCheck.length < 1 ? "w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors" : "w-full pl-10 pr-4 py-2 border border-red-500 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors" }
+                    className= { passwordCheck.length < 1 ? "w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 outline-none transition-colors" : "w-full pl-10 pr-4 py-2 border border-red-500 rounded-full focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors" }
                     value={formData.password}
                     onChange={handleInputChange}
                   />
@@ -174,18 +174,18 @@ const Login = () => {
             <button
               disabled={(passwordCheck.length > 0 && emailCheck.length > 0) || loadingState.loading}
               type="submit"
-              className={`mt-6 w-full  py-2 px-4 rounded-lg focus:ring-2 focus:ring-green-400 focus:ring-offset-2 transition-colors
-                ${(passwordCheck.length > 0 || emailCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-green-400 text-white hover:bg-green-400'}
+              className={`mt-6 w-1/2 py-2 px-4 rounded-full focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-colors
+                ${(passwordCheck.length > 0 || emailCheck.length > 0) || loadingState.loading ? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-yellow-500 text-white hover:bg-yellow-700'}
                 `}
             >
              { loadingState.loading ? <Spinner /> : 'Login'}
             </button>
   
             {/* Toggle Link */}
-            <p className="mt-4 text-sm text-gray-600 text-center">
+            <p className="mt-4 text-sm text-gray-600 ">
               
                Don't have an account? 
-              <NavLink to="/signup" className="text-blue-600 hover:underline focus:outline-none"> Sign Up</NavLink>
+              <NavLink to="/signup" className="text-slate-600 hover:underline focus:outline-none"> Sign Up</NavLink>
             </p>
             <p className='mt-4 mx-auto flex items-center justify-center w-full text-red-500'> { loadingState.error}</p>
           </form>
